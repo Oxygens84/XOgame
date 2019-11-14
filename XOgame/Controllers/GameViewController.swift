@@ -14,11 +14,28 @@ class GameViewController: UIViewController {
     @IBOutlet var firstPlayerTurnLabel: UILabel!
     @IBOutlet var secondPlayerTurnLabel: UILabel!
     @IBOutlet var winnerLabel: UILabel!
+    @IBOutlet var gameStrategyControl: UISegmentedControl!
     @IBOutlet var restartButton: UIButton!
     
-    @IBAction func restartButtonTapped(_ sender: UIButton){}
+    @IBAction func restartButtonTapped(_ sender: UIButton){
+        loadView()
+        viewDidLoad()
+    }
+    
+    @IBAction func gameStrategyChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            Game.shared.game.gameStrategy = .withFriend
+        case 1:
+            Game.shared.game.gameStrategy = .withAI
+        default:
+            break;
+        }
+    }
+
     
     private let gameboard = Gameboard()
+    
     private var currentState: GameState!{
         didSet {
             self.currentState.begin()
@@ -33,6 +50,7 @@ class GameViewController: UIViewController {
                                              gameboard: gameboard,
                                              gameBoardView: gameboardView)
     }
+    
     private func goToNextState(){
         if let winner = self.referee.determineWinner(){
             self.currentState = GameEndedState(winner: winner,
@@ -45,9 +63,12 @@ class GameViewController: UIViewController {
                                                  gameBoardView: gameboardView)
         }
     }
-    
+
     override func viewDidLoad() {
+        Game.shared.game = GameSession()
+        self.gameStrategyControl.selectedSegmentIndex = Game.shared.game.gameStrategy.index()
         super.viewDidLoad()
+        self.gameboard.clear()
         self.goToFirstState()
         gameboardView.onSelectPosition = { [weak self] position in
             guard let self = self else { return }
@@ -55,7 +76,6 @@ class GameViewController: UIViewController {
             if self.currentState.isComplete{
                 self.goToNextState()
             }
-            //self.gameboardView.placeMarkView(XView(), at: position)
         }
     }
 

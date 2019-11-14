@@ -11,19 +11,21 @@ import Foundation
 public class PlayerInputState: GameState {
     
     public private(set) var isComplete = false
-    public let player: Player
     private(set) weak var gameViewController: GameViewController?
     private(set) weak var gameboard: Gameboard?
     private(set) weak var gameBoardView: GameboardView?
+    public let player: Player
+    private let observer = Observer()
     
     init(player: Player,
          gameViewController: GameViewController,
          gameboard: Gameboard,
          gameBoardView: GameboardView){
-         self.player = player
-         self.gameViewController = gameViewController
-         self.gameboard = gameboard
-         self.gameBoardView = gameBoardView
+            self.player = player
+            self.gameViewController = gameViewController
+            self.gameboard = gameboard
+            self.gameBoardView = gameBoardView
+            Game.shared.game.currentPlayer.value = player
     }
     
     public func begin() {
@@ -31,7 +33,7 @@ public class PlayerInputState: GameState {
         case .first:
             self.gameViewController?.firstPlayerTurnLabel.isHidden = false
             self.gameViewController?.secondPlayerTurnLabel.isHidden = true
-        case .second:
+        case .second, .ai:
             self.gameViewController?.firstPlayerTurnLabel.isHidden = true
             self.gameViewController?.secondPlayerTurnLabel.isHidden = false
         }
@@ -45,12 +47,15 @@ public class PlayerInputState: GameState {
         switch self.player {
         case .first:
             markView = XView()
-        case .second:
+        case .second, .ai:
             markView = OView()
         }
+        
         self.gameboard?.setPlayer(self.player, at: Position)
         self.gameBoardView?.placeMarkView(markView, at: Position)
         self.isComplete = true
+        self.gameViewController?.gameStrategyControl.isEnabled = false
+            
     }
     
 }

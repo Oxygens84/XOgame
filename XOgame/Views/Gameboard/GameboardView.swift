@@ -10,6 +10,15 @@ import UIKit
 
 public class GameboardView: UIView {
     
+    private var setStrategy: SetPlayerStrategy {
+        switch Game.shared.game.currentPlayer.value {
+        case .first, .second:
+            return FriendStrategy()
+        case .ai:
+            return ArtificialIntelligenceStrategy()
+        }
+    }
+    
     public var onSelectPosition: ((GameboardPosition) -> Void)?
     
     public private(set) var markViewForPosition: [GameboardPosition: MarkView] = [:]
@@ -37,7 +46,7 @@ public class GameboardView: UIView {
         return markViewForPosition[position] == nil
     }
     
-    public func placeMarkView(_ markView: MarkView, at position: GameboardPosition) {
+    public func placeMarkView(_ markView: MarkView, at position: GameboardPosition) {        
         guard self.canPlaceMarkView(at: position) else { return }
         updateFrame(for: markView, at: position)
         markViewForPosition[position] = markView
@@ -60,12 +69,10 @@ public class GameboardView: UIView {
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touchLocation = touches.first?.location(in: self) else { return }
-        let position = GameboardPosition(column: determineColumn(for: touchLocation),
-                                         row: determineRow(for: touchLocation))
-        onSelectPosition?(position)
+        self.setStrategy.playerAction(self, touches: touches, with: event)
+        self.setStrategy.playerAction(self, touches: touches, with: event)
     }
-    
+
     private func drawColumnLines(for rect: CGRect) {
         let columnWidth = self.calculatedColumnWidth
         for i in 1 ..< GameboardSize.columns {
@@ -90,7 +97,7 @@ public class GameboardView: UIView {
         }
     }
     
-    private func determineColumn(for touchLocation: CGPoint) -> Int {
+    public func determineColumn(for touchLocation: CGPoint) -> Int {
         let columnWidth = self.calculatedColumnWidth
         let lastColumn = GameboardSize.columns - 1
         for i in (0 ..< lastColumn) {
@@ -103,7 +110,7 @@ public class GameboardView: UIView {
         return lastColumn
     }
     
-    private func determineRow(for touchLocation: CGPoint) -> Int {
+    public func determineRow(for touchLocation: CGPoint) -> Int {
         let rowHeight = self.calculatedRowHeight
         let lastRow = GameboardSize.rows - 1
         for i in (0 ..< lastRow) {

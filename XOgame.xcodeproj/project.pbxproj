@@ -32,6 +32,7 @@
 		513E289E237D9D4200A5314D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E289D237D9D4200A5314D /* Observable.swift */; };
 		513E28A0237D9D5400A5314D /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E289F237D9D5400A5314D /* Observer.swift */; };
 		513E28A2237D9DC600A5314D /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A1237D9DC600A5314D /* GameSession.swift */; };
+		513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A3237DDA3C00A5314D /* PlayerAiState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		513E289D237D9D4200A5314D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		513E289F237D9D5400A5314D /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		513E28A1237D9DC600A5314D /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		513E28A3237DDA3C00A5314D /* PlayerAiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAiState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				513E2886237C9C5000A5314D /* GameState.swift */,
 				513E2888237C9CB800A5314D /* PlayerInputState.swift */,
+				513E28A3237DDA3C00A5314D /* PlayerAiState.swift */,
 				513E288A237CA65500A5314D /* GameEndedState.swift */,
 			);
 			path = State;
@@ -266,6 +269,7 @@
 				513E2894237D888500A5314D /* SetPlayerStrategy.swift in Sources */,
 				513E2880237C8FF600A5314D /* OView.swift in Sources */,
 				513E2890237D834A00A5314D /* GameStrategy.swift in Sources */,
+				513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */,
 				513E287C237C8FD700A5314D /* Player.swift in Sources */,
 				513E2877237C8F9F00A5314D /* GameboardSize.swift in Sources */,
 				513E289E237D9D4200A5314D /* Observable.swift in Sources */,

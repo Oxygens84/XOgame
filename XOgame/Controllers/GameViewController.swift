@@ -58,9 +58,17 @@ class GameViewController: UIViewController {
         }
         if let playerInputState = currentState as? PlayerInputState {
             self.currentState = PlayerInputState(player: playerInputState.player.next,
-                                                 gameViewController: self,
-                                                 gameboard: gameboard,
-                                                 gameBoardView: gameboardView)
+                                                     gameViewController: self,
+                                                     gameboard: gameboard,
+                                                     gameBoardView: gameboardView)
+        }
+        if let playerAiState = currentState as? PlayerAiState  {
+            if playerAiState.player.next == .ai {
+                self.currentState = PlayerAiState(player: playerAiState.player.next,
+                                                  gameViewController: self,
+                                                  gameboard: gameboard,
+                                                  gameBoardView: gameboardView)
+            }
         }
     }
 

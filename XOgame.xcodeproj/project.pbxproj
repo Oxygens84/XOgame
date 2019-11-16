@@ -33,6 +33,7 @@
 		513E28A0237D9D5400A5314D /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E289F237D9D5400A5314D /* Observer.swift */; };
 		513E28A2237D9DC600A5314D /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A1237D9DC600A5314D /* GameSession.swift */; };
 		513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A3237DDA3C00A5314D /* PlayerAiState.swift */; };
+		513E28A6237DF35000A5314D /* BlindGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A5237DF35000A5314D /* BlindGameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		513E289F237D9D5400A5314D /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		513E28A1237D9DC600A5314D /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		513E28A3237DDA3C00A5314D /* PlayerAiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAiState.swift; sourceTree = "<group>"; };
+		513E28A5237DF35000A5314D /* BlindGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindGameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				513E2888237C9CB800A5314D /* PlayerInputState.swift */,
 				513E28A3237DDA3C00A5314D /* PlayerAiState.swift */,
 				513E288A237CA65500A5314D /* GameEndedState.swift */,
+				513E28A5237DF35000A5314D /* BlindGameState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				513E28A2237D9DC600A5314D /* GameSession.swift in Sources */,
 				513E288B237CA65500A5314D /* GameEndedState.swift in Sources */,
 				513E288E237D830D00A5314D /* Game.swift in Sources */,
+				513E28A6237DF35000A5314D /* BlindGameState.swift in Sources */,
 				513E2860237C8E8F00A5314D /* GameViewController.swift in Sources */,
 				513E2882237C900600A5314D /* XView.swift in Sources */,
 				513E2875237C8F8E00A5314D /* GameboardPosition.swift in Sources */,

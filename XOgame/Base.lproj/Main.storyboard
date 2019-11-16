@@ -18,14 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-hA-hgQ">
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-hA-hgQ">
                                 <rect key="frame" x="10" y="89" width="394" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AmC-Yv-JtM"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Friend"/>
-                                    <segment title="Artificial intelligence"/>
+                                    <segment title="AI"/>
+                                    <segment title="Blindly"/>
                                 </segments>
                                 <color key="tintColor" red="0.4030838296" green="0.29018707599999999" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>

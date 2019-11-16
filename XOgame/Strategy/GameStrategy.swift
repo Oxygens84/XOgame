@@ -10,6 +10,7 @@ enum GameStrategy: Int {
     
     case withFriend = 0
     case withAI = 1
+    case withAIBlindly = 2
     
     func index() -> Int {
         return self.rawValue
@@ -19,7 +20,7 @@ enum GameStrategy: Int {
         switch self {
         case .withFriend:
             return "My friend"
-        case .withAI:
+        case .withAI, .withAIBlindly:
             return "AI"
         }
     }

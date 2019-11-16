@@ -23,16 +23,19 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func gameStrategyChanged(_ sender: UISegmentedControl) {
+        Game.shared.game = GameSession()
         switch sender.selectedSegmentIndex {
         case 0:
             Game.shared.game.gameStrategy = .withFriend
         case 1:
             Game.shared.game.gameStrategy = .withAI
+        case 2:
+            Game.shared.game.gameStrategy = .withAIBlindly
         default:
             break;
         }
+        self.goToFirstState()
     }
-
     
     private let gameboard = Gameboard()
     
@@ -45,10 +48,17 @@ class GameViewController: UIViewController {
     private lazy var referee = Referee(gameboard: gameboard)
 
     private func goToFirstState(){
-        self.currentState = PlayerInputState(player: .first,
-                                             gameViewController: self,
-                                             gameboard: gameboard,
-                                             gameBoardView: gameboardView)
+        if Game.shared.game.gameStrategy == .withAIBlindly {
+            self.currentState = BlindGameState(player: .first,
+                                               gameViewController: self,
+                                               gameboard: gameboard,
+                                               gameBoardView: gameboardView)
+        } else {
+            self.currentState = PlayerInputState(player: .first,
+                                                 gameViewController: self,
+                                                 gameboard: gameboard,
+                                                 gameBoardView: gameboardView)
+        }
     }
     
     private func goToNextState(){
@@ -71,10 +81,11 @@ class GameViewController: UIViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         Game.shared.game = GameSession()
         self.gameStrategyControl.selectedSegmentIndex = Game.shared.game.gameStrategy.index()
+        self.gameStrategyControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)], for: .normal)
         super.viewDidLoad()
         self.gameboard.clear()
         self.goToFirstState()

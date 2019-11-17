@@ -48,16 +48,19 @@ class GameViewController: UIViewController {
     private lazy var referee = Referee(gameboard: gameboard)
 
     private func goToFirstState(){
+        let player = Player.first
         if Game.shared.game.gameStrategy == .withAIBlindly {
             self.currentState = BlindGameState(player: .first,
                                                gameViewController: self,
                                                gameboard: gameboard,
-                                               gameBoardView: gameboardView)
+                                               gameBoardView: gameboardView,
+                                               markViewPrototype: player.markViewPrototype)
         } else {
             self.currentState = PlayerInputState(player: .first,
                                                  gameViewController: self,
                                                  gameboard: gameboard,
-                                                 gameBoardView: gameboardView)
+                                                 gameBoardView: gameboardView,
+                                                 markViewPrototype:  player.markViewPrototype)
         }
     }
     
@@ -70,14 +73,16 @@ class GameViewController: UIViewController {
             self.currentState = PlayerInputState(player: playerInputState.player.next,
                                                      gameViewController: self,
                                                      gameboard: gameboard,
-                                                     gameBoardView: gameboardView)
+                                                     gameBoardView: gameboardView,
+                                                     markViewPrototype: playerInputState.player.next.markViewPrototype)
         }
         if let playerAiState = currentState as? PlayerAiState  {
             if playerAiState.player.next == .ai {
                 self.currentState = PlayerAiState(player: playerAiState.player.next,
                                                   gameViewController: self,
                                                   gameboard: gameboard,
-                                                  gameBoardView: gameboardView)
+                                                  gameBoardView: gameboardView,
+                                                  markViewPrototype:  playerAiState.player.next.markViewPrototype)
             }
         }
     }

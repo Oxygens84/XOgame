@@ -14,18 +14,27 @@ public enum Player: CaseIterable {
     case second
     case ai
     
+    var markViewPrototype: MarkView {
+        switch self {
+            case .first:
+                return XView()
+            case .second, .ai:
+                return OView()
+        }
+    }
+    
     var next: Player {
         switch (self,Game.shared.game.gameStrategy) {
-        case (.first, .withFriend):
-            return .second
-        case (.second, .withFriend):
-            return .first
-        case (.first, .withAI):
-            return .ai
-        case (.ai, .withAI):
-            return .first
-        default:
-            return .first
+            case (.first, .withFriend):
+                return .second
+            case (.second, .withFriend):
+                return .first
+            case (.first, .withAI):
+                return .ai
+            case (.ai, .withAI):
+                return .first
+            default:
+                return .first
         }
         
     }

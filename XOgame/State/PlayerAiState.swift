@@ -14,15 +14,18 @@ public class PlayerAiState: GameState {
     private(set) weak var gameBoardView: GameboardView?
     public let player: Player
     private let observer = Observer()
+    private let markViewPrototype: MarkView
     
     init(player: Player,
          gameViewController: GameViewController,
          gameboard: Gameboard,
-         gameBoardView: GameboardView){
+         gameBoardView: GameboardView,
+         markViewPrototype: MarkView){
         self.player = player
         self.gameViewController = gameViewController
         self.gameboard = gameboard
         self.gameBoardView = gameBoardView
+        self.markViewPrototype = markViewPrototype
         Game.shared.game.currentPlayer.value = player
     }
     
@@ -35,9 +38,9 @@ public class PlayerAiState: GameState {
     public func addMark(at Position: GameboardPosition) {
         guard let gameBoardView = self.gameBoardView,
             gameBoardView.canPlaceMarkView(at: Position) else { return}
-        let markView = OView()
+        //let markView = OView()
         self.gameboard?.setPlayer(self.player, at: Position)
-        self.gameBoardView?.placeMarkView(markView, at: Position)
+        self.gameBoardView?.placeMarkView(self.markViewPrototype.copy(), at: Position)
         self.isComplete = true
         self.gameViewController?.gameStrategyControl.isEnabled = false
         

@@ -34,6 +34,7 @@
 		513E28A2237D9DC600A5314D /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A1237D9DC600A5314D /* GameSession.swift */; };
 		513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A3237DDA3C00A5314D /* PlayerAiState.swift */; };
 		513E28A6237DF35000A5314D /* BlindGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A5237DF35000A5314D /* BlindGameState.swift */; };
+		513E28A923814F2100A5314D /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A823814F2100A5314D /* Copying.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		513E28A1237D9DC600A5314D /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		513E28A3237DDA3C00A5314D /* PlayerAiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAiState.swift; sourceTree = "<group>"; };
 		513E28A5237DF35000A5314D /* BlindGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindGameState.swift; sourceTree = "<group>"; };
+		513E28A823814F2100A5314D /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		513E285C237C8E8F00A5314D /* XOgame */ = {
 			isa = PBXGroup;
 			children = (
+				513E28A723814EF400A5314D /* Prototypes */,
 				513E2892237D885A00A5314D /* Strategy */,
 				513E2885237C9C2C00A5314D /* State */,
 				513E285D237C8E8F00A5314D /* AppDelegate.swift */,
@@ -184,6 +187,14 @@
 				513E289F237D9D5400A5314D /* Observer.swift */,
 			);
 			path = Strategy;
+			sourceTree = "<group>";
+		};
+		513E28A723814EF400A5314D /* Prototypes */ = {
+			isa = PBXGroup;
+			children = (
+				513E28A823814F2100A5314D /* Copying.swift */,
+			);
+			path = Prototypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +285,7 @@
 				513E2880237C8FF600A5314D /* OView.swift in Sources */,
 				513E2890237D834A00A5314D /* GameStrategy.swift in Sources */,
 				513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */,
+				513E28A923814F2100A5314D /* Copying.swift in Sources */,
 				513E287C237C8FD700A5314D /* Player.swift in Sources */,
 				513E2877237C8F9F00A5314D /* GameboardSize.swift in Sources */,
 				513E289E237D9D4200A5314D /* Observable.swift in Sources */,

@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
     @IBOutlet var restartButton: UIButton!
     
     @IBAction func restartButtonTapped(_ sender: UIButton){
+        Log(.restartGame)
         loadView()
         viewDidLoad()
     }

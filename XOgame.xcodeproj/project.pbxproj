@@ -35,6 +35,10 @@
 		513E28A4237DDA3C00A5314D /* PlayerAiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A3237DDA3C00A5314D /* PlayerAiState.swift */; };
 		513E28A6237DF35000A5314D /* BlindGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A5237DF35000A5314D /* BlindGameState.swift */; };
 		513E28A923814F2100A5314D /* Copying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28A823814F2100A5314D /* Copying.swift */; };
+		513E28AC238159E000A5314D /* LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28AB238159E000A5314D /* LogAction.swift */; };
+		513E28AE23815A5D00A5314D /* LogCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28AD23815A5D00A5314D /* LogCommand.swift */; };
+		513E28B023815B7100A5314D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28AF23815B7100A5314D /* Logger.swift */; };
+		513E28B223815BC100A5314D /* LogInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513E28B123815BC100A5314D /* LogInvoker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		513E28A3237DDA3C00A5314D /* PlayerAiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAiState.swift; sourceTree = "<group>"; };
 		513E28A5237DF35000A5314D /* BlindGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindGameState.swift; sourceTree = "<group>"; };
 		513E28A823814F2100A5314D /* Copying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copying.swift; sourceTree = "<group>"; };
+		513E28AB238159E000A5314D /* LogAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAction.swift; sourceTree = "<group>"; };
+		513E28AD23815A5D00A5314D /* LogCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCommand.swift; sourceTree = "<group>"; };
+		513E28AF23815B7100A5314D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		513E28B123815BC100A5314D /* LogInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInvoker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,7 @@
 		513E285C237C8E8F00A5314D /* XOgame */ = {
 			isa = PBXGroup;
 			children = (
+				513E28AA238159BB00A5314D /* Command */,
 				513E28A723814EF400A5314D /* Prototypes */,
 				513E2892237D885A00A5314D /* Strategy */,
 				513E2885237C9C2C00A5314D /* State */,
@@ -197,6 +206,17 @@
 			path = Prototypes;
 			sourceTree = "<group>";
 		};
+		513E28AA238159BB00A5314D /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				513E28AB238159E000A5314D /* LogAction.swift */,
+				513E28AD23815A5D00A5314D /* LogCommand.swift */,
+				513E28AF23815B7100A5314D /* Logger.swift */,
+				513E28B123815BC100A5314D /* LogInvoker.swift */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -270,11 +290,15 @@
 			files = (
 				513E28A2237D9DC600A5314D /* GameSession.swift in Sources */,
 				513E288B237CA65500A5314D /* GameEndedState.swift in Sources */,
+				513E28AC238159E000A5314D /* LogAction.swift in Sources */,
 				513E288E237D830D00A5314D /* Game.swift in Sources */,
 				513E28A6237DF35000A5314D /* BlindGameState.swift in Sources */,
+				513E28B223815BC100A5314D /* LogInvoker.swift in Sources */,
 				513E2860237C8E8F00A5314D /* GameViewController.swift in Sources */,
 				513E2882237C900600A5314D /* XView.swift in Sources */,
+				513E28AE23815A5D00A5314D /* LogCommand.swift in Sources */,
 				513E2875237C8F8E00A5314D /* GameboardPosition.swift in Sources */,
+				513E28B023815B7100A5314D /* Logger.swift in Sources */,
 				513E2884237C901600A5314D /* GameboardView.swift in Sources */,
 				513E2898237D892700A5314D /* ArtificialIntelligenceStrategy.swift in Sources */,
 				513E2879237C8FAA00A5314D /* Gameboard.swift in Sources */,

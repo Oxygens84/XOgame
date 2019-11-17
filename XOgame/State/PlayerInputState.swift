@@ -45,6 +45,7 @@ public class PlayerInputState: GameState {
     }
     
     public func addMark(at Position: GameboardPosition) {
+        Log(.playerInput(player: self.player, position: Position))
         if Game.shared.game.gameStrategy == .withAIBlindly {
             return
         }

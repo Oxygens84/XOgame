@@ -12,6 +12,7 @@ public struct GameboardSize {
     
     public static let columns = 3
     public static let rows = 3
+    public static let blindLimit = 5
     
     private init() {}
     

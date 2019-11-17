@@ -1,14 +1,14 @@
 //
-//  PlayerInputState.swift
+//  BlindGameState.swift
 //  XOgame
 //
-//  Created by Oxana Lobysheva on 13/11/2019.
+//  Created by Oxana Lobysheva on 14/11/2019.
 //  Copyright © 2019 Oxana Lobysheva. All rights reserved.
 //
 
 import Foundation
 
-public class PlayerInputState: GameState {
+public class BlindGameState: GameState {
     
     public private(set) var isComplete = false
     private(set) weak var gameViewController: GameViewController?
@@ -16,7 +16,6 @@ public class PlayerInputState: GameState {
     private(set) weak var gameBoardView: GameboardView?
     public let player: Player
     private let observer = Observer()
-    
     private let markViewPrototype: MarkView
     
     init(player: Player,
@@ -24,13 +23,13 @@ public class PlayerInputState: GameState {
          gameboard: Gameboard,
          gameBoardView: GameboardView,
          markViewPrototype: MarkView){
-            self.player = player
-            self.gameViewController = gameViewController
-            self.gameboard = gameboard
-            self.gameBoardView = gameBoardView
-            self.markViewPrototype = markViewPrototype
-            Game.shared.game.currentPlayer.value = player
-    }
+        self.player = player
+        self.gameViewController = gameViewController
+        self.gameboard = gameboard
+        self.gameBoardView = gameBoardView
+        self.markViewPrototype = markViewPrototype
+        Game.shared.game.currentPlayer.value = player
+    }    
     
     public func begin() {
         switch self.player {
@@ -46,16 +45,19 @@ public class PlayerInputState: GameState {
     
     public func addMark(at Position: GameboardPosition) {
         Log(.playerInput(player: self.player, position: Position))
-        if Game.shared.game.gameStrategy == .withAIBlindly {
-            return
-        }
         guard let gameBoardView = self.gameBoardView,
             gameBoardView.canPlaceMarkView(at: Position) else { return}
-        self.gameboard?.setPlayer(self.player, at: Position)
-        self.gameBoardView?.placeMarkView(self.markViewPrototype.copy(), at: Position)
-        self.isComplete = true
-        self.gameViewController?.gameStrategyControl.isEnabled = false
-            
+        if Game.shared.game.blindVariantsPlayer.count < GameboardSize.blindLimit {
+            //let markView: MarkView
+            //markView = XView()
+            self.gameboard?.setPlayer(self.player, at: Position)
+            self.gameBoardView?.placeMarkView(self.markViewPrototype.copy(), at: Position)
+            self.gameViewController?.gameStrategyControl.isEnabled = false
+            Game.shared.game.blindVariantsPlayer.append([Position.column, Position.row])
+            if Game.shared.game.blindVariantsPlayer.count == GameboardSize.blindLimit {
+                self.isComplete = true
+            }            
+        }
     }
     
 }

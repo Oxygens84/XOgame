@@ -22,7 +22,9 @@ class GameEndedState: GameState{
     
     func begin() {
         self.gameViewController?.winnerLabel.isHidden = false
+        self.gameViewController?.gameStrategyControl.isEnabled = true
         if let winner = winner {
+            Log(.gameFinished(winner: winner))
             self.gameViewController?.winnerLabel.text = self.winnerNamer(from: winner) + " won"
         } else {
             self.gameViewController?.firstPlayerTurnLabel.isHidden = true
@@ -37,8 +39,8 @@ class GameEndedState: GameState{
         switch winner {
         case .first:
             return "1st player"
-        case .second:
-            return "2nd player"
+        case .second, .ai:
+            return Game.shared.game.gameStrategy.getOpponentName()
         }
     }
     
